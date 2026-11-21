@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leur quart d'heure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a campaign money tool held to a newspaper graphics desk standard
+   IDEA a punch clock: your year of income measured on their clock
+   PICTURE large clock face; the red sector is the time a billionaire household needs to earn your year
+   COLOUR république blue band, white ground, signal red for "eux", blue for "vous"
+   TYPE Archivo condensed 800 for titles and figures + Archivo text
+   LAYOUT laptop: title across, clock left, controls right in the blue band; phone: title, clock, controls */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0c0e1a);--ink:light-dark(#0b0d17,#eef0f8);--mute:light-dark(#4a4f63,#a9aec4);--line:light-dark(#d9dbe5,#2a2e44);--panel:light-dark(#f2f3f9,#161a2c);--blue:light-dark(#1b33c9,#8a9cff);--red:light-dark(#d1001c,#ff6464);--hero:#14228f;--hero2:#0d176a}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:24px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Archivo,system-ui,sans-serif;overflow-x:clip}
+.band{padding-block:clamp(32px,4.5vw,68px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+h1,h2,.big{font-stretch:78%;font-weight:800;line-height:1.05;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,5vw,52px);max-width:20ch}
+h2{font-size:clamp(28px,3.4vw,40px);margin-bottom:14px;max-width:24ch}
+p{margin:0 0 12px;max-width:68ch}
+a{color:inherit}
+.hero{background:linear-gradient(160deg,var(--hero),var(--hero2));color:#fff}
+.topnav{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:clamp(20px,3vw,36px)}
+.topnav>a{font-weight:800;font-stretch:78%;font-size:22px;color:#fff;text-decoration:none}
+.topnav span{display:flex;gap:6px;flex-wrap:wrap}
+.topnav span a{color:#fff;text-decoration:none;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.35);font-size:15px;min-height:44px;display:inline-flex;align-items:center}
+.topnav span a:hover,.topnav span a[aria-current]{background:rgba(255,255,255,.14)}
+.hgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center;margin-top:clamp(20px,3vw,36px)}
+.clock{margin:0;width:100%;max-width:470px;aspect-ratio:1;justify-self:center}
+.clock svg{display:block;width:100%;height:100%}
+.lede{color:#d6dbfb;font-size:17px}
+.lab{display:block;font-weight:700;margin:18px 0 8px}
+.field{display:flex;flex-wrap:wrap;gap:8px}
+#rev{font:inherit;font-size:clamp(24px,3vw,30px);font-weight:800;font-stretch:85%;width:10ch;min-height:58px;padding:6px 14px;border:2px solid #fff;border-radius:10px;background:#fff;color:#0b0d17}
+#per{font:inherit;font-size:16px;min-height:58px;padding:0 14px;border:2px solid rgba(255,255,255,.55);border-radius:10px;background:transparent;color:#fff;cursor:pointer}
+#per option{color:#0b0d17;background:#fff}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 22px}
+.presets button{font:inherit;font-size:14px;min-height:44px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.45);background:transparent;color:#fff;cursor:pointer}
+.presets button:hover{background:rgba(255,255,255,.12)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #ffd23f;outline-offset:2px}
+.say{font-size:clamp(20px,2.2vw,24px);line-height:1.3;margin-bottom:16px}
+.say b,.facts b{white-space:nowrap}
+.facts{border-top:1px solid rgba(255,255,255,.28);padding-top:14px;display:grid;gap:8px}
+.facts p{margin:0;color:#e3e7ff}
+.note{font-size:14px;color:#b9c1f2}
+.two{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.routes{display:grid;gap:26px;margin-top:8px}
+.route{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:14px;align-items:center}
+.who{font-weight:800;font-stretch:78%;font-size:24px}
+.track{display:flex;align-items:stretch}
+.st{flex:1 1 0;border:2px solid currentColor;border-radius:12px;padding:10px 12px;background:var(--bg);font-size:15px;line-height:1.35}
+.st span{display:block;color:var(--ink)}
+.st b{display:block;color:currentColor;font-size:16px;margin-bottom:2px}
+.st.fill{background:currentColor}
+.st.fill span,.st.fill b{color:var(--bg)}
+.arr{flex:0 0 30px;align-self:center;height:2px;background:currentColor;position:relative}
+.arr::after{content:"";position:absolute;right:-1px;top:-6px;border-left:10px solid currentColor;border-top:7px solid transparent;border-bottom:7px solid transparent}
+.you{color:var(--blue)}
+.them{color:var(--red)}
+.stat{background:var(--panel);border-radius:14px;padding:22px}
+.stat .big{font-size:clamp(64px,9vw,104px);color:var(--red);line-height:.95}
+.stat p:last-child{margin:0}
+.bars{display:grid;gap:16px;margin-top:6px}
+.bar{display:grid;grid-template-columns:minmax(0,15em) minmax(0,1fr) 4em;gap:14px;align-items:center}
+.bar .t{font-size:15px;line-height:1.3}
+.tr{height:30px;background:var(--panel);border-radius:6px;position:relative}
+.f{position:absolute;left:0;top:0;bottom:0;background:var(--blue);border-radius:6px}
+.bar.b .f{background:var(--red)}
+.bar.cf .f{background:transparent;border:2px dashed var(--red)}
+.v{font-weight:800;font-stretch:80%;font-size:22px;text-align:right;white-space:nowrap}
+.bar.b .v,.bar.cf .v{color:var(--red)}
+.money{display:grid;gap:10px}
+.money .row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.money .row b{white-space:nowrap}
+.money .gap{font-size:clamp(34px,4vw,46px);font-weight:800;font-stretch:78%;color:var(--red);line-height:1}
+.share{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:center}
+.share img{width:100%;height:auto;border-radius:12px;display:block;box-shadow:0 1px 0 var(--line)}
+.btn{font:inherit;font-weight:700;min-height:48px;padding:0 20px;border-radius:10px;border:0;background:var(--blue);color:#fff;cursor:pointer}
+.btn:hover{filter:brightness(1.1)}
+.quote{font-size:17px;border-left:3px solid var(--line);padding-left:14px;margin:0 0 14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(16em,1fr));gap:16px;margin-top:8px}
+.card{border:1px solid var(--line);border-radius:14px;padding:18px}
+.card h3{font-size:18px;line-height:1.25;margin:0 0 8px}
+.card p{font-size:15px;margin:0;color:var(--mute)}
+.holds{background:var(--panel);border-radius:14px;padding:20px;margin-top:18px}
+.holds ul{margin:8px 0 0;padding-left:20px}
+.holds li{margin-bottom:6px}
+textarea{width:100%;min-height:250px;font:15px/1.5 Archivo,system-ui,sans-serif;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px;resize:vertical}
+.acts{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:12px}
+.alt{background:var(--panel)}
+footer{font-size:14px;color:var(--mute)}
+footer ul{padding-left:18px;margin:8px 0 14px}
+@media(max-width:760px){.hgrid,.two,.share{grid-template-columns:minmax(0,1fr)}.clock{max-width:340px}}
+@media(max-width:600px){.route{grid-template-columns:minmax(0,1fr);gap:8px}.track{flex-direction:column}.arr{flex:0 0 22px;width:2px;height:auto;align-self:flex-start;margin-left:24px}.arr::after{right:auto;top:auto;bottom:-1px;left:-6px;border-left:7px solid transparent;border-right:7px solid transparent;border-top:10px solid currentColor;border-bottom:0}.bar{grid-template-columns:minmax(0,1fr) 4em}.bar .t{grid-column:1/-1}}
+</style>
+</head>
+<body>
+
+<header class="hero band">
+  <div class="wrap">
+    <div class="topnav"><a href="index.html">La Juste Part</a><span><a href="reponses.html">Réponses</a><a href="quart-dheure.html" aria-current="page">Leur quart d'heure</a></span></div>
+    <h1>Votre année de revenu, en minutes de milliardaire</h1>
+    <div class="hgrid">
+      <figure class="clock" aria-label="Cadran&nbsp;: temps nécessaire à un foyer milliardaire pour gagner votre revenu annuel"><svg id="clk" viewBox="0 0 400 400" role="img"></svg></figure>
+      <div>
+        <p class="lede">Entrez votre revenu avant impôt. On le compare au revenu moyen des quelque 75 foyers les plus riches de France&nbsp;: environ 1 milliard d'euros par an, soit près de 1 900 € par minute, nuits et week-ends compris.</p>
+        <label class="lab" for="rev">Votre revenu avant impôt</label>
+        <div class="field">
+          <input id="rev" type="text" inputmode="numeric" autocomplete="off" value="30 000" aria-describedby="hint">
+          <select id="per" aria-label="Période"><option value="an">€ par an</option><option value="mois">€ par mois</option></select>
+        </div>
+        <div class="presets" id="presets">
+          <button type="button" data-v="22000">Revenu médian d'un foyer&nbsp;: 22 000 €</button>
+          <button type="button" data-v="61900">Seuil des 10&nbsp;% les plus aisés</button>
+          <button type="button" data-v="171000">Seuil des 1&nbsp;%</button>
+        </div>
+        <p class="say" id="say"></p>
+        <div class="facts">
+          <p id="yrs"></p>
+          <p id="pos"></p>
+          <p class="note" id="hint">Ordres de grandeur. Revenus et seuils&nbsp;: Institut des politiques publiques (IPP), données fiscales de 2016.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="band">
+  <div class="wrap two">
+    <div>
+      <h2>Leur revenu ne passe presque pas par l'impôt sur le revenu</h2>
+      <p>Votre salaire arrive sur votre compte et passe par le barème. Les bénéfices des grandes fortunes restent, pour l'essentiel, dans des holdings qu'elles contrôlent. Ils n'y subissent que l'impôt sur les sociétés.</p>
+      <div class="routes">
+        <div class="route you">
+          <div class="who">Vous</div>
+          <div class="track">
+            <div class="st"><b>Salaire</b><span>versé chaque mois</span></div>
+            <div class="arr"></div>
+            <div class="st"><b>Barème progressif</b><span>impôt sur le revenu + prélèvements sociaux, jusqu'à environ 59&nbsp;% au sommet</span></div>
+            <div class="arr"></div>
+            <div class="st"><b>Votre compte</b><span>ce qui reste</span></div>
+          </div>
+        </div>
+        <div class="route them">
+          <div class="who">Eux</div>
+          <div class="track">
+            <div class="st"><b>Bénéfices du groupe</b><span>dividendes des sociétés détenues</span></div>
+            <div class="arr"></div>
+            <div class="st"><b>Impôt sur les sociétés</b><span>33,3&nbsp;% en 2016, 25&nbsp;% aujourd'hui</span></div>
+            <div class="arr"></div>
+            <div class="st fill"><b>La holding</b><span>une cagnotte qui réinvestit, achète et sert de garantie pour emprunter</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stat">
+      <div class="big">≈ 2&nbsp;%</div>
+      <p><b>C'est ce que représente l'impôt sur le revenu</b> dans le revenu économique des 378 foyers les plus riches (top 0,001&nbsp;%). Le reste de leur imposition, c'est surtout l'impôt sur les sociétés payé par leurs entreprises.</p>
+      <p class="note" style="color:var(--mute)">Source&nbsp;: IPP, note n° 92, 2023.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band alt">
+  <div class="wrap two">
+    <div>
+      <h2>Au sommet, le taux d'imposition décroche</h2>
+      <p>Tous impôts directs compris, y compris l'impôt payé par leurs sociétés, et rapportés au revenu économique. Même méthode pour chaque ligne.</p>
+      <div class="bars" id="bars"></div>
+    </div>
+    <div class="stat money" style="background:var(--bg)">
+      <p style="margin:0"><b>Pour un foyer milliardaire moyen</b> (≈ 1 milliard d'euros de revenu par an)&nbsp;:</p>
+      <div class="row"><span>Impôts payés (26&nbsp;%)</span><b>≈ 260 M€</b></div>
+      <div class="row"><span>Au taux personnel maximal (≈ 59&nbsp;%)</span><b>≈ 590 M€</b></div>
+      <div class="gap">≈ 330 M€</div>
+      <p style="margin:0">d'écart, chaque année, pour un seul foyer. C'est un ordre de grandeur, calculé à partir des chiffres de l'IPP.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap share">
+    <img id="cardimg" alt="Carte à partager avec votre résultat">
+    <div>
+      <h2>Votre carte à partager</h2>
+      <p>Elle se met à jour avec votre revenu. Pour l'enregistrer, faites un clic droit sur l'image, ou un appui long sur téléphone.</p>
+      <p class="quote" id="sharetxt"></p>
+      <div class="acts"><button class="btn" id="copyshare" type="button">Copier le texte</button></div>
+    </div>
+  </div>
+</section>
+
+<section class="band alt">
+  <div class="wrap">
+    <h2>Ce que répondent les contradicteurs</h2>
+    <p>Un comparateur qui veut durer doit tenir face aux meilleures objections. Les voici.</p>
+    <div class="cards">
+      <div class="card"><h3>«&nbsp;Un bénéfice gardé dans une holding n'est pas un revenu touché.&nbsp;»</h3><p>La Fondation IFRAP mesure les impôts directs en part du revenu disponible&nbsp;: 55,8&nbsp;% pour les 1&nbsp;% les plus aisés, 55,2&nbsp;% pour les 0,1&nbsp;%. Avec cette mesure, pas de décrochage. Le vrai désaccord&nbsp;: un bénéfice qu'on contrôle sans le toucher est-il un revenu&nbsp;?</p></div>
+      <div class="card"><h3>«&nbsp;Le slogan “deux fois moins d'impôts” mélange des séries.&nbsp;»</h3><p>L'économiste François Geerolf relève que les taux des milliardaires excluent la TVA et les cotisations retraite, contrairement à ceux de l'ensemble des Français. Sur une base homogène, il trouve 25,1&nbsp;% pour les milliardaires contre 26,8&nbsp;% au seuil des 10&nbsp;% les plus aisés.</p></div>
+      <div class="card"><h3>«&nbsp;Ces chiffres datent de 2016.&nbsp;»</h3><p>Depuis&nbsp;: prélèvement forfaitaire unique (2018), ISF remplacé par l'IFI (2018), impôt sur les sociétés ramené à 25&nbsp;%. À notre connaissance, aucune mesure publique n'a refait le calcul avec la même méthode.</p></div>
+    </div>
+    <div class="holds">
+      <b>Ce que cette page affirme, et seulement ça&nbsp;:</b>
+      <ul>
+        <li>sur la même base de calcul, les foyers milliardaires paient 26&nbsp;%, contre 46&nbsp;% pour les 0,1&nbsp;% les plus aisés juste en dessous ;</li>
+        <li>l'impôt sur le revenu ne pèse qu'environ 2&nbsp;% de leur revenu économique ;</li>
+        <li>la raison&nbsp;: leurs revenus restent dans des holdings soumises à l'impôt sur les sociétés, pas au barème. Elle ne dit pas «&nbsp;deux fois moins que vous&nbsp;».</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap two">
+    <div>
+      <h2>Le chiffre de référence a bientôt dix ans</h2>
+      <p>Pour savoir combien paient les plus grandes fortunes, holdings comprises, des chercheurs ont dû obtenir un accès exceptionnel aux données fiscales. Rien n'oblige l'administration à publier ce taux chaque année.</p>
+      <p><b>Une demande simple, que même les contradicteurs peuvent difficilement refuser&nbsp;:</b> publier chaque année le taux d'imposition effectif des 0,001&nbsp;% les plus riches, mesuré sur leur revenu économique. Le message ci-contre reprend votre résultat. Copiez-le et envoyez-le à votre député ; ses coordonnées sont sur <a href="https://www.assemblee-nationale.fr">assemblee-nationale.fr</a>.</p>
+    </div>
+    <div>
+      <label class="lab" for="msg" style="margin-top:0">Message à votre député</label>
+      <textarea id="msg" readonly></textarea>
+      <div class="acts"><button class="btn" id="copymsg" type="button">Copier le message</button><span id="msgok" class="note" style="color:var(--mute)"></span></div>
+    </div>
+  </div>
+</section>
+
+<footer class="band alt">
+  <div class="wrap">
+    <p><b>La Juste Part</b> est un collectif citoyen indépendant. Cet outil prolonge le débat ouvert par le manifeste <i>Contre l'oligarchie internationale</i> (Seuil, novembre 2026), sans émaner de son collectif signataire.</p>
+    <b>Sources</b>
+    <ul>
+      <li>L. Bach, A. Bozio, A. Guillouzouic, C. Malgouyres, «&nbsp;Quels impôts les milliardaires paient-ils&nbsp;?&nbsp;», Note IPP n° 92, 2023 (données 2016)&nbsp;: taux de 46&nbsp;% et 26&nbsp;%, ≈ 2&nbsp;% d'impôt sur le revenu, taux personnel maximal ≈ 59&nbsp;%, seuils de revenu.</li>
+      <li>Revenu moyen des ≈ 75 foyers milliardaires (≈ 1 milliard d'euros par an)&nbsp;: IPP, repris par Europe 1.</li>
+      <li>Taux ≈ 30&nbsp;% au seuil des 10&nbsp;% les plus aisés (note IPP de 2023) et chiffres sur base homogène&nbsp;: F. Geerolf, «&nbsp;Les mensonges de la taxe Zucman&nbsp;».</li>
+      <li>Fondation IFRAP, «&nbsp;Fiscalité des plus riches&nbsp;», Revue n° 270, 2025.</li>
+    </ul>
+    <p>Méthode&nbsp;: temps = votre revenu annuel ÷ (1 milliard d'euros ÷ 525 600 minutes). Position&nbsp;: interpolation entre les seuils de revenu économique publiés par l'IPP, par foyer fiscal ; c'est un repère grossier.</p>
+  </div>
+</footer>
+
+<script>
+{
+const PER_MIN = 1e9 / 525600;
+const nf = new Intl.NumberFormat('fr-FR');
+const $ = id => document.getElementById(id);
+const RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+const inp = $('rev'), per = $('per'), svg = $('clk');
+const PTS = [[22000,50],[61900,90],[83500,95],[171000,99],[627000,99.9],[3274000,99.99],[26208000,99.999],[265066000,99.9998]];
+const BARS = [
+  {t:'Seuil des 10 % les plus aisés', v:30, l:'≈ 30 %', c:''},
+  {t:'Les 0,1 % les plus aisés', v:46, l:'46 %', c:''},
+  {t:'Les ≈ 75 foyers milliardaires', v:26, l:'26 %', c:'b'},
+  {t:'Leur taux si leurs revenus passaient par le barème personnel', v:59, l:'≈ 59 %', c:'cf'}
+];
+$('bars').innerHTML = BARS.map(b => `<div class="bar ${b.c}"><div class="t">${b.t}</div><div class="tr"><div class="f" style="width:${(b.v/60*100).toFixed(1)}%"></div></div><div class="v">${b.l}</div></div>`).join('');
+
+function parse(){
+  const n = Number(String(inp.value).replace(/[^\d]/g,'')) || 0;
+  return Math.min(n * (per.value === 'mois' ? 12 : 1), 1e11);
+}
+function split(m){ const tot = Math.round(m); return [Math.floor(tot/60), tot % 60]; }
+function dur(m){
+  if (m < 1) return Math.max(1, Math.round(m*60)) + ' s';
+  if (m < 59.5) return Math.round(m) + ' min';
+  if (m < 1440){ const [h,r] = split(m); return h + ' h ' + String(r).padStart(2,'0'); }
+  const d = m/1440; return (d < 10 ? d.toFixed(1).replace('.',',') : nf.format(Math.round(d))) + ' jours';
+}
+function durLong(m){
+  if (m < 1){ const s = Math.max(1, Math.round(m*60)); return s + (s > 1 ? ' secondes' : ' seconde'); }
+  if (m < 59.5){ const k = Math.round(m); return k + (k > 1 ? ' minutes' : ' minute'); }
+  if (m < 1440){ const [h,r] = split(m); const hh = h + (h > 1 ? ' heures' : ' heure'); return r ? hh + ' ' + String(r).padStart(2,'0') : hh; }
+  const d = m/1440; return (d < 10 ? d.toFixed(1).replace('.',',') : nf.format(Math.round(d))) + ' jours';
+}
+function pct(x){
+  for (let i = 1; i < PTS.length; i++){
+    const [a,pa] = PTS[i-1], [b,pb] = PTS[i];
+    if (x <= b){ const t = (Math.log(x)-Math.log(a))/(Math.log(b)-Math.log(a)); return 100 - Math.exp(Math.log(100-pa) + t*(Math.log(100-pb)-Math.log(100-pa))); }
+  }
+  return 99.9999;
+}
+function posText(x){
+  if (x <= 0) return '';
+  if (x < 22000) return 'Repère : votre revenu est sous le revenu médian des foyers fiscaux (22 000 € en 2016).';
+  const p = pct(x);
+  const s = p < 99 ? nf.format(Math.round(p)) : p < 99.9 ? p.toFixed(1).replace('.',',') : p < 99.99 ? p.toFixed(2).replace('.',',') : p.toFixed(4).replace('.',',');
+  return `Repère : vous gagnez plus qu'environ <b>${s} %</b> des foyers fiscaux.`;
+}
+function frac(m){ if (m <= 0) return 0; const f = (m % 60) / 60; return (f < 0.0005 && m >= 60) ? 1 : f; }
+
+function clock(f, label, sub){
+  const cx = 200, cy = 200, R = 186, rw = 130, rc = 84;
+  let t = '';
+  for (let i = 0; i < 60; i++){
+    const a = i/60*2*Math.PI, l = i % 5 ? 8 : 18, w = i % 5 ? 1.5 : 3.5;
+    t += `<line x1="${(cx+Math.sin(a)*R).toFixed(1)}" y1="${(cy-Math.cos(a)*R).toFixed(1)}" x2="${(cx+Math.sin(a)*(R-l)).toFixed(1)}" y2="${(cy-Math.cos(a)*(R-l)).toFixed(1)}" stroke="#fff" stroke-width="${w}" stroke-linecap="round"/>`;
+  }
+  const nums = [0,15,30,45].map(i => { const a = i/60*2*Math.PI, r = 152; return `<text x="${(cx+Math.sin(a)*r).toFixed(1)}" y="${(cy-Math.cos(a)*r+8).toFixed(1)}" fill="#fff" font-size="22" font-weight="700" text-anchor="middle" font-family="Archivo,sans-serif">${i}</text>`; }).join('');
+  let wedge = '', hand = '';
+  if (f >= 0.9995) wedge = `<circle cx="${cx}" cy="${cy}" r="${rw}" fill="#ff4d4d"/>`;
+  else if (f > 0){
+    const a = f*2*Math.PI, x = cx+Math.sin(a)*rw, y = cy-Math.cos(a)*rw;
+    wedge = `<path d="M${cx} ${cy}L${cx} ${cy-rw}A${rw} ${rw} 0 ${a > Math.PI ? 1 : 0} 1 ${x.toFixed(2)} ${y.toFixed(2)}Z" fill="#ff4d4d"/>`;
+    hand = `<line x1="${cx}" y1="${cy}" x2="${(cx+Math.sin(a)*(rw+14)).toFixed(1)}" y2="${(cy-Math.cos(a)*(rw+14)).toFixed(1)}" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`;
+  }
+  const fs = label.length > 7 ? 36 : 50;
+  svg.innerHTML = `<circle cx="${cx}" cy="${cy}" r="196" fill="rgba(255,255,255,.05)" stroke="#fff" stroke-width="3"/>${t}${nums}<circle cx="${cx}" cy="${cy}" r="${rw}" fill="rgba(255,255,255,.1)"/>${wedge}${hand}<circle cx="${cx}" cy="${cy}" r="${rc}" fill="#14228f"/><text x="${cx}" y="${cy+ (sub ? 6 : 16)}" fill="#fff" font-size="${fs}" font-weight="800" font-stretch="78%" text-anchor="middle" font-family="Archivo,sans-serif">${label}</text>${sub ? `<text x="${cx}" y="${cy+34}" fill="#c9d0fb" font-size="19" text-anchor="middle" font-family="Archivo,sans-serif">${sub}</text>` : ''}`;
+}
+
+let cur = 0, anim = 0;
+function animateTo(target, label, sub){
+  cancelAnimationFrame(anim);
+  if (RM){ cur = target; clock(cur, label, sub); return; }
+  const from = cur, t0 = performance.now(), D = 450;
+  const step = now => {
+    const k = Math.min(1, (now - t0)/D), e = 1 - (1-k)**3;
+    cur = from + (target - from)*e; clock(cur, label, sub);
+    if (k < 1) anim = requestAnimationFrame(step);
+  };
+  anim = requestAnimationFrame(step);
+}
+
+const cv = document.createElement('canvas'); cv.width = 1200; cv.height = 630;
+function wrap(c, text, x, y, max, lh){
+  const words = text.split(' '); let line = '';
+  for (const w of words){
+    const test = line ? line + ' ' + w : w;
+    if (c.measureText(test).width > max && line){ c.fillText(line, x, y); line = w; y += lh; }
+    else line = test;
+  }
+  if (line) c.fillText(line, x, y);
+  return y + lh;
+}
+function card(inc, m){
+  const c = cv.getContext('2d');
+  const g = c.createLinearGradient(0, 0, 1200, 630); g.addColorStop(0, '#14228f'); g.addColorStop(1, '#0d176a');
+  c.fillStyle = g; c.fillRect(0, 0, 1200, 630);
+  const cx = 975, cy = 315, r = 190, f = frac(m);
+  c.fillStyle = 'rgba(255,255,255,.1)'; c.beginPath(); c.arc(cx, cy, r, 0, 2*Math.PI); c.fill();
+  if (f > 0){ c.fillStyle = '#ff4d4d'; c.beginPath(); c.moveTo(cx, cy); c.arc(cx, cy, r, -Math.PI/2, -Math.PI/2 + f*2*Math.PI); c.closePath(); c.fill(); }
+  c.strokeStyle = '#fff';
+  for (let i = 0; i < 60; i++){
+    const a = i/60*2*Math.PI, R = r + 22, l = i % 5 ? 7 : 16;
+    c.lineWidth = i % 5 ? 1.5 : 3.5; c.beginPath();
+    c.moveTo(cx + Math.sin(a)*R, cy - Math.cos(a)*R); c.lineTo(cx + Math.sin(a)*(R-l), cy - Math.cos(a)*(R-l)); c.stroke();
+  }
+  c.fillStyle = '#14228f'; c.beginPath(); c.arc(cx, cy, r*0.55, 0, 2*Math.PI); c.fill();
+  c.fillStyle = '#fff'; c.textAlign = 'left';
+  c.font = '800 112px Archivo, sans-serif'; c.fillText(durLong(m), 64, 180);
+  c.font = '500 34px Archivo, sans-serif';
+  let y = wrap(c, `C'est le temps qu'il faut à un foyer milliardaire pour gagner mon revenu annuel (${nf.format(Math.round(inc))} €).`, 64, 250, 640, 44);
+  c.font = '700 34px Archivo, sans-serif';
+  wrap(c, "Il paie 26 % d'impôts. Les 0,1 % les plus aisés : 46 %.", 64, y + 18, 640, 44);
+  c.font = '400 22px Archivo, sans-serif'; c.fillStyle = '#c9d0fb';
+  c.fillText('Source : Institut des politiques publiques, note n° 92 (données 2016)', 64, 580);
+  try { $('cardimg').src = cv.toDataURL('image/png'); } catch(e) {}
+}
+
+let state = {inc: 0, m: 0};
+function msgText(inc, m){
+  return `Madame la députée, Monsieur le député,
+
+Selon l'Institut des politiques publiques, les quelque 75 foyers les plus riches de France payaient en 2016 environ 26 % d'impôts sur leur revenu économique, contre 46 % pour les 0,1 % les plus aisés. L'impôt sur le revenu ne pesait qu'environ 2 % du revenu des 378 foyers les plus riches.
+
+Ce chiffre de référence a bientôt dix ans, et aucune statistique publique ne permet de savoir si cet écart s'est creusé depuis.
+
+Je gagne environ ${nf.format(Math.round(inc))} € par an. Un foyer milliardaire gagne cette somme en ${durLong(m)}.
+
+Je vous demande de soutenir la publication annuelle, par l'administration fiscale, du taux d'imposition effectif des plus grandes fortunes, holdings comprises, et de me faire connaître votre position sur le principe d'égalité devant l'impôt.
+
+Avec mes salutations républicaines,`;
+}
+function shareText(inc, m){
+  return `Un foyer milliardaire gagne mon revenu annuel (${nf.format(Math.round(inc))} €) en ${durLong(m)}. Et il paie 26 % d'impôts, contre 46 % pour les 0,1 % les plus aisés. (Institut des politiques publiques, données 2016)`;
+}
+
+function update(){
+  const inc = parse();
+  try { localStorage.setItem('lqh', JSON.stringify({v: inp.value, p: per.value})); } catch(e) {}
+  if (!inc){
+    $('say').textContent = 'Entrez un revenu pour lancer le cadran.';
+    $('yrs').textContent = ''; $('pos').textContent = '';
+    animateTo(0, '0', ''); return;
+  }
+  const m = inc / PER_MIN; state = {inc, m};
+  const laps = Math.floor(m/60 - 1e-9);
+  const sub = m >= 60 ? (laps >= 1 ? '+ ' + nf.format(laps) + (laps > 1 ? ' tours' : ' tour') : '') : 'sur leur cadran';
+  animateTo(frac(m), dur(m), m < 1440 ? sub : '');
+  $('say').innerHTML = `Un foyer milliardaire gagne votre année en <b>${durLong(m)}</b>.`;
+  const yrs = 1e9 / inc;
+  $('yrs').innerHTML = yrs >= 1 ? `Il vous faudrait <b>${nf.format(Math.round(yrs))} ${Math.round(yrs) > 1 ? 'ans' : 'an'}</b> pour gagner ce qu'ils gagnent en une année.` : 'Vous gagnez plus en un an que le foyer milliardaire moyen.';
+  $('pos').innerHTML = posText(inc);
+  $('msg').value = msgText(inc, m);
+  $('sharetxt').textContent = shareText(inc, m);
+  card(inc, m);
+}
+
+function copy(text, btn, done){
+  const ok = () => { btn.textContent = done; setTimeout(() => { btn.textContent = btn.dataset.l; }, 1800); };
+  btn.dataset.l = btn.dataset.l || btn.textContent;
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(ok).catch(() => { btn.textContent = 'Sélectionnez le texte et copiez-le'; });
+  } else btn.textContent = 'Sélectionnez le texte et copiez-le';
+}
+
+try {
+  const s = JSON.parse(localStorage.getItem('lqh') || 'null');
+  if (s && s.v){ inp.value = s.v; per.value = s.p === 'mois' ? 'mois' : 'an'; }
+} catch(e) {}
+
+inp.addEventListener('input', update);
+inp.addEventListener('blur', () => { const n = Number(String(inp.value).replace(/[^\d]/g,'')); if (n) inp.value = nf.format(n); });
+per.addEventListener('change', update);
+$('presets').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  per.value = 'an'; inp.value = nf.format(Number(b.dataset.v)); update();
+});
+$('copyshare').addEventListener('click', e => copy($('sharetxt').textContent, e.currentTarget, 'Texte copié'));
+$('copymsg').addEventListener('click', e => { $('msg').select(); copy($('msg').value, e.currentTarget, 'Message copié'); });
+
+update();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (state.inc) card(state.inc, state.m); });
+}
+</script>
+</body>
+</html>

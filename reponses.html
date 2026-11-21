@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Réponses à leurs arguments</title>
+<meta name="description" content="Les arguments contre la taxation des plus grandes fortunes, et une réponse courte, sourcée, prête à copier.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+.search{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+#q{font:inherit;font-size:17px;flex:1 1 18em;min-height:52px;padding:0 16px;border:2px solid #fff;border-radius:10px;background:#fff;color:#0b0d17}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chips a{color:#fff;font-size:14px;text-decoration:none;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.4);min-height:40px;display:inline-flex;align-items:center}
+.chips a:hover{background:rgba(255,255,255,.14)}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15em),1fr));gap:12px;margin:0 0 26px}
+.how div{background:var(--panel);border-radius:12px;padding:14px 16px;font-size:15px}
+.how b{display:block;font-size:16px}
+.list{display:grid;gap:18px}
+.arg{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--bg)}
+.arg:target{outline:3px solid var(--blue)}
+.say{background:var(--panel);padding:18px 20px}
+.say .k{font-size:14px;font-weight:700;color:var(--red)}
+.say h3{font-size:clamp(22px,2.6vw,28px);margin-top:4px}
+.ans{padding:18px 20px}
+.ans .k{font-size:14px;font-weight:700;color:var(--blue)}
+.short{font-size:18px;line-height:1.45;margin:6px 0 14px;max-width:none}
+.acts{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+details{border-top:1px solid var(--line);padding:0 20px}
+summary{cursor:pointer;font-weight:700;padding:14px 0;min-height:44px;list-style-position:inside}
+.det{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px;padding-bottom:18px}
+.det h4{margin:0 0 6px;font-size:15px}
+.det p{font-size:15px}
+.true{background:color-mix(in srgb,var(--red) 7%,var(--bg));border-radius:12px;padding:14px}
+.src{margin:6px 0 0;padding-left:18px;font-size:14px}
+.src li{margin-bottom:4px}
+.empty{display:none;padding:20px;border:2px dashed var(--line);border-radius:14px}
+@media(max-width:700px){.det{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+
+<header class="hero band">
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="index.html">La Juste Part</a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="reponses.html" aria-current="page">Réponses</a>
+        <a href="quart-dheure.html">Leur quart d'heure</a>
+      </nav>
+    </div>
+    <h1>Ils disent… Vous répondez.</h1>
+    <p class="lede">Les arguments qu'on entend contre la taxation des plus grandes fortunes, chacun avec une réponse courte prête à coller en commentaire, le détail chiffré et ses sources. Et, à chaque fois, ce qui est vrai dans l'argument&nbsp;: une réponse qui reconnaît sa part de vrai porte plus loin.</p>
+    <div class="search">
+      <label for="q" class="sr" style="position:absolute;left:-9999px">Chercher un argument</label>
+      <input id="q" type="search" placeholder="Chercher&nbsp;: exil, startups, ISF, mondial…" autocomplete="off">
+    </div>
+    <div class="chips" id="chips"></div>
+  </div>
+</header>
+
+<main class="band">
+  <div class="wrap">
+    <div class="how">
+      <div><b>1. Repérez l'argument</b>sous une vidéo, dans un débat, à table.</div>
+      <div><b>2. Copiez la réponse courte</b>elle tient dans un commentaire.</div>
+      <div><b>3. Ajoutez le lien</b>chaque fiche a son adresse, avec ses sources.</div>
+    </div>
+    <div class="list" id="list"></div>
+    <p class="empty" id="empty">Aucun argument ne correspond. Essayez un autre mot.</p>
+  </div>
+</main>
+
+<footer class="band">
+  <div class="wrap">
+    <p><b>Méthode.</b> Chaque réponse s'appuie sur des sources publiques citées dans la fiche. Les chiffres de l'Institut des politiques publiques reposent sur des données fiscales de 2016. Quand les économistes ne sont pas d'accord, la fiche le dit.</p>
+    <p>La Juste Part est un collectif citoyen indépendant. Il n'est lié à aucun parti, ni au collectif signataire du manifeste <i>Contre l'oligarchie internationale</i>.</p>
+  </div>
+</footer>
+
+<script>
+{
+const ARGS = [
+  {
+    id: 'exil', tag: 'Exil',
+    say: "« Ils vont tous partir à l'étranger. »",
+    short: "L'exil fiscal existe, mais il est faible : chaque année, environ 0,2 % des 1 % les plus aisés quittent la France, selon le Conseil d'analyse économique. Et une exit tax peut le limiter.",
+    detail: "Les départs de contribuables soumis à l'impôt sur la fortune étaient de 300 à 400 par an au début des années 2000. Ils ont dépassé 1 000 par an après 2012, puis sont retombés autour de 200 après la réforme de 2018. Le Conseil d'analyse économique conclut que les effets économiques de l'exil restent limités. Et l'administration rappelle que bien des départs ont des raisons professionnelles ou personnelles, pas forcément fiscales.",
+    truth: "Selon le Conseil d'analyse économique, la fiscalité du patrimoine accélère bien les départs des plus hauts patrimoines. Ce n'est pas un fantasme : c'est une question d'ampleur.",
+    sources: [
+      ["Conseil d'analyse économique, Focus n° 118 sur l'émigration fiscale (2025)", "https://cae-eco.fr/static/pdf/Focus_118_emigration_fiscale_250725_v2.pdf"],
+      ["Actu-Juridique, « Impôt sur la fortune et compétitivité fiscale »", "https://www.actu-juridique.fr/fiscalite/fiscal-finances/impot-sur-la-fortune-et-competitivite-fiscale/"],
+      ["Public Sénat, la taxation des ultra-riches n'entraînerait pas d'exil fiscal significatif", "https://www.publicsenat.fr/actualites/economie/budget-la-taxation-des-ultra-riches-nentrainerait-pas-dexil-fiscal-significatif"]
+    ]
+  },
+  {
+    id: 'deja-beaucoup', tag: 'Ils paient déjà',
+    say: "« Les riches paient déjà énormément d'impôts. »",
+    short: "En montant, oui. En proportion de leurs revenus, non : les 0,1 % les plus aisés paient 46 %, les quelque 75 foyers milliardaires 26 %, selon l'Institut des politiques publiques.",
+    detail: "La raison : l'essentiel de leurs revenus reste dans des holdings, où il ne supporte que l'impôt sur les sociétés, et pas le barème de l'impôt sur le revenu. Pour les 378 foyers les plus riches, l'impôt sur le revenu ne représente qu'environ 2 % de leur revenu économique. Ces chiffres reposent sur les données fiscales de 2016.",
+    truth: "Les 10 % les plus aisés paient environ 75 % de l'impôt sur le revenu, rappelle la Fondation IFRAP. Et compter comme un revenu des bénéfices gardés dans une société reste contesté.",
+    sources: [
+      ["Institut des politiques publiques, note n° 92, « Quels impôts les milliardaires paient-ils ? » (2023)", "https://www.ipp.eu/wp-content/uploads/2023/09/Note_IPP_92-OLD.pdf"],
+      ["Assemblée nationale, question écrite citant l'IPP (2 % pour les 378 foyers les plus riches)", "https://questions.assemblee-nationale.fr/dyn/16/questions/QANR5L16QE11246.pdf"],
+      ["Fondation IFRAP, « Les milliardaires paient bien plus que 2 % d'impôts »", "https://www.ifrap.org/budget-et-fiscalite/les-milliardaires-paient-bien-plus-que-2-dimpots"]
+    ]
+  },
+  {
+    id: 'outil-de-travail', tag: 'Outil de travail',
+    say: "« On taxe l'outil de travail : ils devront vendre leur entreprise. »",
+    short: "Quand il n'y a pas de liquidités, Gabriel Zucman propose de payer en actions de l'entreprise, versées à un fonds public géré par Bpifrance. Personne n'est obligé de vendre.",
+    detail: "D'après Zucman, les vrais problèmes de liquidité concernent quelques dizaines de cas, surtout dans la tech, avec des actions non cotées en Bourse. Pour eux, il propose que l'impôt plancher soit payé en nature, en titres de l'entreprise.",
+    truth: "L'ancien ISF exonérait les biens professionnels ; la taxe Zucman les inclut, c'est une vraie rupture. Ses opposants estiment que le paiement en actions mènerait à une « nationalisation rampante ».",
+    sources: [
+      ["LCP, Gabriel Zucman propose de payer l'impôt plancher en nature", "https://lcp.fr/actualites/taxation-des-ultrariches-gabriel-zucman-exhorte-les-deputes-a-ne-pas-reproduire-les"],
+      ["Moneyvox, « quelques dizaines de cas » et paiement en actions via Bpifrance", "https://www.moneyvox.fr/impot/actualites/105116/gabriel-zucman-ne-veut-pas-que-quelques-dizaines-de-cas-de-la-tech-servent-alibi-pour-ne-pas-taxer-nos-giga-milliardaires"],
+      ["Institut de l'entreprise, « La taxe Zucman » (juin 2026), critique du paiement en nature", "https://www.institut-entreprise.fr/wp-content/uploads/2026/06/TCT_Taxe-Zucman-2026.pdf"]
+    ]
+  },
+  {
+    id: 'rendement', tag: 'Rendement',
+    say: "« Ça ne rapportera presque rien. »",
+    short: "Les estimations vont de 5 à 20 milliards d'euros par an. Même l'hypothèse basse est du même ordre que ce que coûte chaque année la suppression de l'ISF : plus de 4 milliards, selon France Stratégie.",
+    detail: "Gabriel Zucman estime le rendement à environ 20 milliards, avec une marge d'erreur de 5. D'autres économistes, comme Philippe Aghion ou Xavier Jaravel, l'estiment plutôt à 5 milliards, à cause de l'optimisation et de l'exil. Un des auteurs de la note du Conseil d'analyse économique reconnaît qu'il n'y a « pas de certitude » sur le montant.",
+    truth: "L'écart tient surtout à deux questions : faut-il déduire l'impôt sur les sociétés déjà payé par les entreprises, et quelle part partira en optimisation. Une étude publiée par un collectif patronal va jusqu'à chiffrer des pertes nettes pour l'État.",
+    sources: [
+      ["Sénat, rapport sur la proposition de loi (2025) : environ 20 milliards selon Zucman", "https://www.senat.fr/rap/l24-689/l24-6891.pdf"],
+      ["Moneyvox, d'autres experts estiment le gain à 5 milliards", "https://www.moneyvox.fr/actu/105103/budget-bientot-une-nouvelle-taxe-sur-les-hauts-patrimoines"],
+      ["Vie-publique, coût du remplacement de l'ISF par l'IFI", "https://www.vie-publique.fr/en-bref/291443-impot-de-solidarite-sur-la-fortune-isf-le-cout-de-son-remplacement"],
+      ["ADCF, l'étude du collectif patronal « Trop c'est trop »", "https://www.adcf.org/taxe-zucman-etude-pertes-fiscales-presidentielle-2027/"]
+    ]
+  },
+  {
+    id: 'ruissellement', tag: 'Ruissellement',
+    say: "« Baisser leurs impôts, ça fait investir et ça crée des emplois. »",
+    short: "Après la suppression de l'ISF en 2018, le comité d'évaluation de France Stratégie n'a identifié aucun effet sur l'investissement. Il a surtout constaté une forte hausse des dividendes, versés à une minorité de foyers.",
+    detail: "Ce comité, placé sous l'égide de France Stratégie, organisme rattaché au Premier ministre, a suivi la réforme pendant près de cinq ans. Il estime que le remplacement de l'ISF par l'impôt sur la fortune immobilière coûte vraisemblablement plus de 4 milliards d'euros par an à l'État.",
+    truth: "Le comité reste prudent : mesurer les effets d'une réforme fiscale est difficile, et ne pas trouver d'effet ne prouve pas qu'il n'y en a aucun.",
+    sources: [
+      ["Europe 1, « aucun effet identifié sur l'investissement »", "https://www.europe1.fr/economie/la-suppression-de-lisf-naurait-pas-deffets-encore-discernables-sur-linvestissement-4071584"],
+      ["Public Sénat, forte hausse des dividendes versés à une minorité", "https://www.publicsenat.fr/actualites/politique/suppression-de-l-isf-flat-tax-ca-n-est-pas-du-ruissellement-mais-de-l-evaporation"],
+      ["France Stratégie, rapport final du comité d'évaluation (octobre 2023)", "https://www.strategie.gouv.fr/sites/strategie.gouv.fr/files/atoms/files/fs-2023-rapport-isf-quatrieme_rapport_complet_17octobre.pdf"]
+    ]
+  },
+  {
+    id: 'startups', tag: 'Startups',
+    say: "« Ça va tuer les startups et l'innovation. »",
+    short: "La taxe ne vise que les patrimoines de plus de 100 millions d'euros. Les fondateurs riches sur le papier mais sans liquidités sont quelques dizaines, et pourraient payer en actions.",
+    detail: "Le patron de Mistral, Arthur Mensch, a dit qu'il ne pourrait pas payer. Zucman répond que ce ne sont pas ces quelques dizaines de cas qui paieraient l'essentiel de l'impôt, et qu'ils ne doivent pas servir d'alibi pour épargner les plus grandes fortunes.",
+    truth: "Une trentaine de dirigeants de la tech jugent la mesure contre-productive. La question des entreprises non cotées est réelle, et la loi doit la régler.",
+    sources: [
+      ["Moneyvox, Zucman et le cas des fondateurs de la tech", "https://www.moneyvox.fr/impot/actualites/105116/gabriel-zucman-ne-veut-pas-que-quelques-dizaines-de-cas-de-la-tech-servent-alibi-pour-ne-pas-taxer-nos-giga-milliardaires"],
+      ["Public Sénat, les patrons ont-ils raison de s'inquiéter ?", "https://www.publicsenat.fr/actualites/economie/taxe-zucman-les-patrons-ont-ils-raison-de-sinquieter-dune-eventuelle-imposition-des-plus-fortunes"]
+    ]
+  },
+  {
+    id: 'mondial', tag: 'Mondial',
+    say: "« Ça n'a de sens qu'au niveau mondial. »",
+    short: "La coopération avance déjà : en 2024, le G20 s'est engagé à coopérer pour que les ultra-riches soient effectivement imposés, et l'ONU négocie une convention fiscale jusqu'en 2027. Attendre l'unanimité, c'est ne jamais commencer.",
+    detail: "Le président de la République a déclaré que la taxe n'avait de sens que si elle était mondiale. Mais chaque pays peut commencer, avec une exit tax pour décourager les départs. La France l'a déjà fait : elle a créé seule sa taxe sur les services numériques en 2019, avant tout accord international.",
+    truth: "Un impôt national est plus facile à contourner qu'un accord mondial. D'où l'importance d'une exit tax et de la coopération internationale.",
+    sources: [
+      ["La Libre Belgique (AFP), le G20 s'engage à « coopérer » pour taxer les super-riches (2024)", "https://www.lalibre.be/international/2024/07/26/le-g20-veut-que-les-super-riches-contribuent-a-des-systemes-fiscaux-plus-justes-TLBBUYTXUNFGVEWVHCBILTSEQQ/"],
+      ["Financial Afrik, négociations de la convention fiscale de l'ONU jusqu'en 2027", "https://www.financialafrik.com/2026/06/29/negociation-de-la-convention-cadre-des-nation-unis-sur-la-cooperation-fiscale-un-tournant-pour-les-etats-et-la-societe-civile-africains/"],
+      ["Public Sénat, position du président de la République", "https://www.publicsenat.fr/actualites/economie/taxe-zucman-les-patrons-ont-ils-raison-de-sinquieter-dune-eventuelle-imposition-des-plus-fortunes"]
+    ]
+  },
+  {
+    id: 'inconstitutionnel', tag: 'Constitution',
+    say: "« C'est confiscatoire et inconstitutionnel. »",
+    short: "Les juristes sont divisés, et seul le Conseil constitutionnel tranchera. Mais l'égalité devant l'impôt joue aussi dans l'autre sens : aujourd'hui, les plus grandes fortunes paient proportionnellement moins que les 0,1 % juste en dessous.",
+    detail: "Un rapport du Sénat juge la taxe « probablement inconstitutionnelle ». D'autres juristes relèvent que les plus fortunés peuvent justement choisir de ne pas percevoir de revenus en laissant leurs liquidités dans des holdings, ce qui fragilise l'argument de la confiscation.",
+    truth: "Pour certains juristes, le caractère confiscatoire d'un impôt s'apprécie au regard des liquidités réellement disponibles. Et le Conseil constitutionnel a déjà censuré des taux jugés confiscatoires, en 2012. Le risque juridique est réel.",
+    sources: [
+      ["Sénat, rapport sur la proposition de loi (2025)", "https://www.senat.fr/rap/l24-689/l24-6891.pdf"],
+      ["Le Club des juristes, « La taxe Zucman face à la Constitution »", "https://www.leclubdesjuristes.com/economie/la-taxe-zucman-face-a-la-constitution-11965/"]
+    ]
+  },
+  {
+    id: 'jalousie', tag: 'Jalousie',
+    say: "« C'est de la jalousie, on veut punir la réussite. »",
+    short: "86 % des Français soutiennent la taxe, dont 89 % des sympathisants LR et 92 % des sympathisants Renaissance (Ifop). Demander que chacun paie au moins autant que les autres en proportion, c'est l'égalité devant l'impôt.",
+    detail: "Le principe est inscrit à l'article 13 de la Déclaration de 1789 : la contribution commune doit être répartie entre tous les citoyens en raison de leurs facultés. Même Warren Buffett s'est étonné de payer, en proportion de ses revenus, moins d'impôts que sa secrétaire.",
+    truth: "Le sondage Ifop a été commandé par le Parti socialiste. Et le slogan « les milliardaires paient deux fois moins que les Français » est contesté par certains économistes, qui estiment qu'il compare des séries incompatibles : mieux vaut s'en tenir aux chiffres de même base.",
+    sources: [
+      ["Public Sénat, la taxe Zucman plébiscitée par 86 % des Français (sondage Ifop)", "https://www.publicsenat.fr/actualites/politique/la-taxe-zucman-plebiscitee-par-86-des-francais-il-se-passe-un-truc-massif-et-transpartisan-dans-le-pays"],
+      ["Slate, l'exemple de Warren Buffett", "https://www.slate.fr/economie/taxe-zucman-pas-seul-moyen-aller-vers-plus-justice-fiscale-france-debat-impots-effort-riches-budget-finances"],
+      ["François Geerolf, « Les mensonges de la taxe Zucman » (critique)", "https://fgeerolf.com/mensonges-taxe-zucman.html"]
+    ]
+  }
+];
+
+const nb = s => String(s).replace(/ ([%»:;?!])/g, ' $1').replace(/« /g, '« ');
+for (const a of ARGS){ for (const k of ['say','short','detail','truth']) a[k] = nb(a[k]); }
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const list = document.getElementById('list');
+const q = document.getElementById('q');
+const empty = document.getElementById('empty');
+
+document.getElementById('chips').innerHTML = ARGS.map(a => `<a href="#${a.id}">${esc(a.tag)}</a>`).join('');
+
+list.innerHTML = ARGS.map(a => `
+  <article class="arg" id="${a.id}" data-text="${esc((a.say + ' ' + a.short + ' ' + a.detail + ' ' + a.truth + ' ' + a.tag).toLowerCase())}">
+    <div class="say"><div class="k">Ils disent</div><h3>${esc(a.say)}</h3></div>
+    <div class="ans">
+      <div class="k">Réponse courte</div>
+      <p class="short">${esc(a.short)}</p>
+      <div class="acts">
+        <button class="btn" type="button" data-copy="${a.id}">Copier la réponse</button>
+        <button class="btn ghost" type="button" data-link="${a.id}">Copier le lien</button>
+      </div>
+    </div>
+    <details>
+      <summary>Le détail, ce qui est vrai dans l'argument, les sources</summary>
+      <div class="det">
+        <div><h4>En détail</h4><p>${esc(a.detail)}</p>
+          <h4>Sources</h4><ul class="src">${a.sources.map(([t,u]) => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a></li>`).join('')}</ul></div>
+        <div class="true"><h4>Ce qui est vrai dans l'argument</h4><p style="margin:0">${esc(a.truth)}</p></div>
+      </div>
+    </details>
+  </article>`).join('');
+
+function pageUrl(id){
+  const u = location.href.split('#')[0];
+  return u + '#' + id;
+}
+function copyText(text, btn){
+  const label = btn.dataset.label || btn.textContent;
+  btn.dataset.label = label;
+  const done = ok => { btn.textContent = ok ? 'Copié' : 'Sélectionnez et copiez'; setTimeout(() => { btn.textContent = label; }, 1800); };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(() => done(true)).catch(() => done(false));
+  else done(false);
+}
+list.addEventListener('click', e => {
+  const c = e.target.closest('[data-copy]');
+  if (c){ const a = ARGS.find(x => x.id === c.dataset.copy); copyText(a.short + ' ' + a.sources[0][1], c); return; }
+  const l = e.target.closest('[data-link]');
+  if (l) copyText(pageUrl(l.dataset.link), l);
+});
+
+q.addEventListener('input', () => {
+  const v = q.value.trim().toLowerCase();
+  let shown = 0;
+  for (const el of list.children){
+    const hit = !v || el.dataset.text.includes(v);
+    el.style.display = hit ? '' : 'none';
+    if (hit) shown++;
+  }
+  empty.style.display = shown ? 'none' : 'block';
+});
+
+function openFromHash(){
+  const id = location.hash.slice(1);
+  const el = id && document.getElementById(id);
+  if (el && el.classList.contains('arg')){ el.querySelector('details').open = true; }
+}
+window.addEventListener('hashchange', openFromHash);
+openFromHash();
+}
+</script>
+</body>
+</html>

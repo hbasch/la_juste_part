@@ -1,0 +1,47 @@
+/* VOICE campaign site for a citizen collective: direct, sourced, readable on a phone
+   IDEA a tract: république blue band, black on white, one red for "eux"
+   PICTURE the tools themselves, opened at the top of each page
+   COLOUR blue #14228f band, white ground, red #d1001c accent
+   TYPE Archivo condensed 800 for titles + Archivo text
+   LAYOUT one column of content up to 1100px, cards in a responsive grid */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0c0e1a);--ink:light-dark(#0b0d17,#eef0f8);--mute:light-dark(#4a4f63,#a9aec4);--line:light-dark(#d9dbe5,#2a2e44);--panel:light-dark(#f2f3f9,#161a2c);--blue:light-dark(#1b33c9,#8a9cff);--red:light-dark(#d1001c,#ff6464);--hero:#14228f;--hero2:#0d176a}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:24px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Archivo,system-ui,sans-serif;overflow-x:clip}
+a{color:inherit}
+.band{padding-block:clamp(32px,4.5vw,64px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+.wrap{max-width:1100px;margin:0 auto}
+h1,h2,h3,.big{font-stretch:78%;font-weight:800;line-height:1.05;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,5vw,52px);max-width:22ch}
+h2{font-size:clamp(28px,3.4vw,40px);margin-bottom:14px;max-width:26ch}
+h3{font-size:22px}
+p{margin:0 0 12px;max-width:68ch}
+.hero{background:linear-gradient(160deg,var(--hero),var(--hero2));color:#fff}
+.hero p{color:#dfe3fd}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:clamp(20px,3vw,40px)}
+.brand{font-weight:800;font-stretch:78%;font-size:22px;text-decoration:none;color:#fff}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#fff;text-decoration:none;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.35);font-size:15px;min-height:44px;display:inline-flex;align-items:center}
+.nav a:hover,.nav a[aria-current]{background:rgba(255,255,255,.14)}
+.lede{font-size:clamp(17px,1.8vw,20px);margin-top:16px}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22em),1fr));gap:16px;margin-top:28px}
+.tool{display:block;background:#fff;color:#0b0d17;border-radius:16px;padding:22px;text-decoration:none;min-height:100%}
+.tool:hover{outline:3px solid #ffd23f}
+.tool .k{font-size:14px;font-weight:700;color:#d1001c}
+.tool h3{margin:6px 0 8px;font-size:26px}
+.tool p{color:#3b4056;margin:0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14em),1fr));gap:16px;margin-top:8px}
+.stat{background:var(--panel);border-radius:14px;padding:20px}
+.stat .big{font-size:clamp(48px,6vw,68px);line-height:1;color:var(--red)}
+.stat.b .big{color:var(--blue)}
+.stat p{margin:8px 0 0}
+.note{font-size:14px;color:var(--mute)}
+.soon{border:2px dashed var(--line);border-radius:16px;padding:22px;margin-top:8px}
+.btn{font:inherit;font-weight:700;min-height:44px;padding:0 18px;border-radius:10px;border:0;background:var(--blue);color:#fff;cursor:pointer}
+.btn:hover{filter:brightness(1.1)}
+.btn.ghost{background:transparent;color:var(--blue);border:1px solid var(--line)}
+button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #ffd23f;outline-offset:2px}
+footer{font-size:14px;color:var(--mute);border-top:1px solid var(--line)}
+footer ul{padding-left:18px;margin:8px 0 14px}
