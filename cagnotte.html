@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La cagnotte du troisième yacht</title>
+<meta name="description" content="Cagnotte satirique : aidez Gonzague de la Holding à s'offrir son troisième yacht. Aucun argent n'est collecté.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+.warn{background:#ffd23f;color:#0b0d17;font-weight:700;text-align:center;padding:10px 16px;font-size:15px}
+.camp{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);margin-top:26px;align-items:start}
+.pic{background:linear-gradient(180deg,#7fb6ff 0%,#cfe5ff 55%,#1d5fb8 56%,#0e3f86 100%);border-radius:18px;aspect-ratio:16/10;position:relative;overflow:hidden}
+.pic svg{position:absolute;inset:0;width:100%;height:100%}
+.box{background:#fff;color:#0b0d17;border-radius:18px;padding:22px}
+.raised{font-weight:800;font-stretch:78%;font-size:clamp(36px,4.6vw,52px);line-height:1}
+.goal{color:#4a4f63;margin-top:4px}
+.bar{height:14px;background:#e7e9f3;border-radius:99px;margin:14px 0 6px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:#d1001c;border-radius:99px;transition:width .6s}
+.meta{display:flex;justify-content:space-between;gap:10px;font-size:14px;color:#4a4f63;flex-wrap:wrap}
+.gifts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}
+.gift{font:inherit;font-weight:700;min-height:54px;border-radius:12px;border:2px solid #d1001c;background:#fff;color:#d1001c;cursor:pointer;padding:6px 10px}
+.gift:hover{background:#d1001c;color:#fff}
+.gift:focus-visible{outline:3px solid #ffd23f;outline-offset:2px}
+.reveal{display:none;margin-top:18px;border-top:2px dashed #d9dbe5;padding-top:16px}
+.reveal.on{display:block}
+.reveal h3{font-size:24px;margin-bottom:8px}
+.reveal p{color:#2a2f45}
+.reveal .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.reveal .btn{text-decoration:none;display:inline-flex;align-items:center}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,20em),1fr));gap:24px}
+.news li,.wall li{border-top:1px solid var(--line);padding:12px 0;list-style:none}
+.news,.wall{padding:0;margin:0}
+.news b,.wall b{display:block}
+.wall span{color:var(--mute);font-size:15px}
+@media(max-width:760px){.camp{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:no-preference){.boat{animation:bob 4s ease-in-out infinite;transform-origin:center}@keyframes bob{50%{transform:translateY(5px) rotate(-.6deg)}}}
+</style>
+</head>
+<body>
+<div class="warn" role="note">Cagnotte satirique : aucun argent n'est demandé ni collecté, et aucune donnée n'est enregistrée.</div>
+
+<header class="hero band">
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="index.html">La Juste Part</a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="reponses.html">Réponses</a>
+        <a href="excuses.html">Excuses</a>
+        <a href="cagnotte.html" aria-current="page">Cagnotte</a>
+        <a href="quart-dheure.html">Quart d'heure</a>
+        <a href="solutions.html">Solutions</a>
+      </nav>
+    </div>
+    <h1>Aidez Gonzague à s'offrir son troisième yacht</h1>
+    <p class="lede">Menacé par un impôt plancher de 2 %, Gonzague de la Holding (412 millions d'euros, personnage fictif) risque de devoir garder ses deux yachts actuels une saison de plus. Chaque euro compte.</p>
+
+    <div class="camp">
+      <div class="pic" aria-label="Illustration : un grand yacht blanc numéro 3 sur la mer">
+        <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+          <circle cx="540" cy="70" r="34" fill="#fff6c9"/>
+          <g class="boat">
+            <path d="M90 250 L560 250 L520 300 L140 300 Z" fill="#ffffff"/>
+            <path d="M140 300 L520 300 L512 310 L150 310 Z" fill="#c9d3e6"/>
+            <path d="M170 250 L210 205 L470 205 L500 250 Z" fill="#f4f6fb"/>
+            <path d="M230 205 L260 170 L420 170 L440 205 Z" fill="#e8ecf6"/>
+            <g fill="#1b2f5e">
+              <rect x="225" y="215" width="40" height="16" rx="4"/><rect x="280" y="215" width="40" height="16" rx="4"/>
+              <rect x="335" y="215" width="40" height="16" rx="4"/><rect x="390" y="215" width="40" height="16" rx="4"/>
+              <rect x="270" y="180" width="34" height="13" rx="4"/><rect x="316" y="180" width="34" height="13" rx="4"/><rect x="362" y="180" width="34" height="13" rx="4"/>
+            </g>
+            <rect x="335" y="120" width="4" height="50" fill="#9aa6c2"/>
+            <path d="M339 122 L392 134 L339 146 Z" fill="#d1001c"/>
+            <text x="352" y="140" font-family="Archivo,sans-serif" font-weight="800" font-size="13" fill="#fff">3</text>
+            <text x="440" y="285" font-family="Archivo,sans-serif" font-weight="800" font-size="18" fill="#1b2f5e">N°3</text>
+          </g>
+          <path d="M0 320 Q80 310 160 320 T320 320 T480 320 T640 320 V400 H0Z" fill="#0e3f86" opacity=".55"/>
+        </svg>
+      </div>
+
+      <div class="box">
+        <div class="raised" id="raised">3,40 €</div>
+        <div class="goal">collectés sur un objectif de 180 000 000 €</div>
+        <div class="bar"><i id="bar"></i></div>
+        <div class="meta"><span id="pct">0,000002 % de l'objectif</span><span id="donors">2 donateurs</span></div>
+        <div class="gifts">
+          <button class="gift" type="button" data-v="1">Donner 1 €</button>
+          <button class="gift" type="button" data-v="10">Donner 10 €</button>
+          <button class="gift" type="button" data-v="0" data-label="un week-end de RTT">Donner un week-end de RTT</button>
+          <button class="gift" type="button" data-v="0" data-label="un rein">Donner un rein</button>
+        </div>
+        <div class="reveal" id="reveal" aria-live="polite">
+          <h3 id="thanks">Merci&nbsp;!</h3>
+          <p>Petite précision : <b>Gonzague n'a pas besoin de vous.</b> Ses revenus restent dans sa holding. Pour les 378 foyers les plus riches de France, l'impôt sur le revenu ne représente qu'environ 2 % de leur revenu économique, selon l'Institut des politiques publiques.</p>
+          <p>Rien n'a été prélevé. Votre euro sera bien plus utile ailleurs&nbsp;: dans un média indépendant, une coopérative, ou une association qui se bat pour la justice fiscale.</p>
+          <div class="acts">
+            <a class="btn" href="solutions.html">Où mettre vraiment mon euro</a>
+            <button class="btn ghost" id="share" type="button">Copier un message à partager</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="band">
+  <div class="wrap cols">
+    <section>
+      <h2>Les nouvelles de Gonzague</h2>
+      <ul class="news">
+        <li><b>Jour 3</b>La taxe Zucman a été rejetée par le Parlement. Ouf. Mais on n'est jamais trop prudent.</li>
+        <li><b>Jour 9</b>Mon fiscaliste me confirme que vous payez, en proportion, plus d'impôts que moi. Merci pour votre générosité.</li>
+        <li><b>Jour 14</b>Le yacht n°2 se sent seul. Le yacht n°1 refuse de lui parler.</li>
+        <li><b>Jour 21</b>Je pensais partir en Belgique, mais il paraît qu'il y pleut. Je reste, à condition que rien ne change.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Le mur des donateurs</h2>
+      <ul class="wall" id="wall">
+        <li><b>Une aide-soignante</b><span>1 € — « Il a l'air tellement triste. »</span></li>
+        <li><b>Un livreur à vélo</b><span>2,40 € — « J'espère que ça ruissellera jusqu'à moi. »</span></li>
+        <li><b>Un fiscaliste monégasque</b><span>0 € — « Déductible ? »</span></li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<footer class="band">
+  <div class="wrap">
+    <p><b>Satire.</b> Gonzague de la Holding, ses yachts, ses nouvelles et ses donateurs sont fictifs. Cette page ne collecte ni argent ni donnée : les boutons ne font qu'afficher la chute. Le chiffre cité vient de la note n° 92 de l'Institut des politiques publiques (données 2016) ; d'autres sont sur la page <a href="reponses.html">Réponses</a>.</p>
+    <p>La Juste Part est un collectif citoyen indépendant, lié à aucun parti.</p>
+  </div>
+</footer>
+
+<script>
+{
+const GOAL = 180000000;
+let raised = 3.40, donors = 2;
+const $ = id => document.getElementById(id);
+const eur = n => new Intl.NumberFormat('fr-FR', {minimumFractionDigits: 2, maximumFractionDigits: 2}).format(n) + ' €';
+function render(){
+  $('raised').textContent = eur(raised);
+  const p = raised / GOAL * 100;
+  $('pct').textContent = p.toLocaleString('fr-FR', {maximumSignificantDigits: 2}) + ' % de l’objectif';
+  $('bar').style.width = Math.max(0.4, Math.min(100, p)) + '%';
+  $('donors').textContent = donors + ' donateurs';
+}
+document.querySelectorAll('.gift').forEach(b => b.addEventListener('click', () => {
+  const v = Number(b.dataset.v);
+  raised += v; donors += 1; render();
+  $('thanks').textContent = v ? 'Merci pour vos ' + eur(v) + ' !' : 'Merci pour ' + b.dataset.label + ' !';
+  const li = document.createElement('li');
+  li.innerHTML = '<b>Vous</b><span>' + (v ? eur(v) : b.dataset.label) + ' — « Bon, j’ai compris. »</span>';
+  $('wall').prepend(li);
+  const r = $('reveal'); r.classList.add('on');
+  r.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest'});
+}));
+$('share').addEventListener('click', e => {
+  const btn = e.currentTarget, label = btn.textContent;
+  const text = "J'ai failli donner 1 € pour le troisième yacht d'un milliardaire. Puis j'ai appris que, pour les 378 foyers les plus riches, l'impôt sur le revenu ne pèse qu'environ 2 % de leur revenu économique (Institut des politiques publiques). " + location.href.split('#')[0];
+  const done = ok => { btn.textContent = ok ? 'Copié' : 'Sélectionnez et copiez'; setTimeout(() => { btn.textContent = label; }, 1800); };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(() => done(true)).catch(() => done(false)); else done(false);
+});
+render();
+}
+</script>
+</body>
+</html>

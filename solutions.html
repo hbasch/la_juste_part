@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Des solutions</title>
+<meta name="description" content="Médias indépendants, coopératives, associations pour la justice fiscale : où mettre son argent et son énergie hors des grandes fortunes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.jump a{color:#fff;text-decoration:none;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.12);min-height:44px;display:inline-flex;align-items:center;font-size:15px}
+.jump a:hover{background:rgba(255,255,255,.22)}
+.sec{margin-bottom:clamp(30px,4vw,50px)}
+.sec>p{color:var(--mute)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17em),1fr));gap:14px;margin-top:14px}
+.item{display:flex;flex-direction:column;gap:6px;border:1px solid var(--line);border-radius:14px;padding:18px;text-decoration:none;color:inherit;background:var(--bg)}
+.item:hover{border-color:var(--blue)}
+.item .t{font-weight:800;font-stretch:82%;font-size:21px;line-height:1.15}
+.item .d{font-size:15px;color:var(--mute)}
+.item .u{font-size:14px;color:var(--blue);margin-top:auto;overflow-wrap:anywhere}
+.tag{align-self:flex-start;font-size:13px;font-weight:700;color:var(--red);background:color-mix(in srgb,var(--red) 9%,var(--bg));border-radius:99px;padding:3px 10px}
+</style>
+</head>
+<body>
+
+<header class="hero band">
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="index.html">La Juste Part</a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="reponses.html">Réponses</a>
+        <a href="excuses.html">Excuses</a>
+        <a href="cagnotte.html">Cagnotte</a>
+        <a href="quart-dheure.html">Quart d'heure</a>
+        <a href="solutions.html" aria-current="page">Solutions</a>
+      </nav>
+    </div>
+    <h1>Votre euro est plus utile ici que dans un troisième yacht</h1>
+    <p class="lede">S'informer, consommer, épargner et agir sans passer par les grandes fortunes : des structures qui existent déjà, et qui grandissent avec chaque personne qui les rejoint.</p>
+    <div class="jump">
+      <a href="#medias">S'informer</a>
+      <a href="#coops">Consommer et épargner</a>
+      <a href="#justice">Agir pour la justice fiscale</a>
+      <a href="#comprendre">Comprendre</a>
+    </div>
+  </div>
+</header>
+
+<main class="band">
+  <div class="wrap" id="list"></div>
+</main>
+
+<footer class="band">
+  <div class="wrap">
+    <p>Cette liste n'est ni exhaustive ni sponsorisée : aucune de ces structures n'a demandé à y figurer, et La Juste Part n'en reçoit rien. Pour rejoindre une coopérative, on achète une ou plusieurs parts sociales : renseignez-vous sur ses conditions avant de souscrire.</p>
+    <p>La Juste Part est un collectif citoyen indépendant, lié à aucun parti.</p>
+  </div>
+</footer>
+
+<script>
+{
+const SECTIONS = [
+  { id: 'medias', title: 'S’informer sans milliardaire', intro: 'Des médias qui appartiennent à leurs lecteurs, à leurs journalistes ou à des structures sans but lucratif.', items: [
+    ['Coop-médias', 'Coopérative', "La coopérative citoyenne des médias indépendants, lancée en 2024. Elle réunit médias, acteurs de l'économie sociale et citoyens pour financer et diffuser la presse indépendante. Parts à 100 €.", 'https://www.coop-medias.org/devenir-societaire/'],
+    ['Fonds pour une presse libre', 'Don', "Créé en 2019 par l'équipe de Mediapart. Il reverse les dons à des médias indépendants sélectionnés par appel à projets.", 'https://fondspresselibre.org'],
+    ['Politis', 'Coopérative', "L'hebdomadaire est devenu une coopérative en 2024 : lecteurs et salariés peuvent en devenir copropriétaires, avec des parts à 50 €.", 'https://www.politis.fr'],
+    ['Reporterre', 'Don', 'Média indépendant à but non lucratif, en accès libre, sans publicité, financé par les dons de ses lecteurs.', 'https://reporterre.net'],
+    ['Mediapart', 'Abonnement', 'Journal en ligne financé par ses abonnés, sans publicité, dont le capital est protégé par une structure à but non lucratif.', 'https://www.mediapart.fr'],
+    ['Acrimed', 'Observatoire', "Association de critique des médias, coautrice avec Le Monde diplomatique de la carte « Médias français : qui possède quoi ? ».", 'https://www.acrimed.org/Medias-francais-qui-possede-quoi']
+  ]},
+  { id: 'coops', title: 'Consommer et épargner hors des grands groupes', intro: 'Des coopératives où chaque sociétaire a une voix, quel que soit son apport.', items: [
+    ['Les Licoornes', 'Alliance', "Une alliance d'une vingtaine de coopératives qui proposent des alternatives concrètes : énergie, téléphonie, banque, mobilité, alimentation, médias.", 'https://www.licoornes.coop'],
+    ['TeleCoop', 'Téléphonie', 'Le premier opérateur télécom coopératif, engagé dans la sobriété numérique.', 'https://telecoop.fr'],
+    ['Enercoop', 'Électricité', "Fournisseur d'électricité renouvelable organisé en réseau de coopératives.", 'https://www.enercoop.fr'],
+    ['La Nef', 'Banque', 'Coopérative bancaire éthique qui publie chaque année la liste complète de ses financements.', 'https://www.lanef.com'],
+    ['Mobicoop', 'Mobilité', 'Plateforme coopérative de covoiturage, sans commission sur les trajets.', 'https://www.mobicoop.fr'],
+    ['Commown', 'Électronique', "Coopérative qui loue des appareils électroniques durables et réparables, contre l'obsolescence.", 'https://commown.coop'],
+    ['Label Emmaüs', 'Achats', "La boutique en ligne du mouvement Emmaüs : de la seconde main, au service de l'insertion.", 'https://www.label-emmaus.co'],
+    ['La Louve et les supermarchés coopératifs', 'Alimentation', "Des supermarchés possédés et gérés par leurs membres. La Louve, à Paris, a inspiré des projets dans de nombreuses villes.", 'https://cooplalouve.fr']
+  ]},
+  { id: 'justice', title: 'Agir pour la justice fiscale', intro: 'Des organisations qui enquêtent, chiffrent et font pression.', items: [
+    ['Oxfam France', 'ONG', 'Publie chaque année un rapport sur les inégalités et mène des campagnes pour taxer les plus riches.', 'https://www.oxfamfrance.org'],
+    ['Attac France', 'Association', "Association d'éducation populaire engagée contre l'évasion fiscale et pour la taxation des grandes fortunes.", 'https://france.attac.org'],
+    ['Patriotic Millionaires', 'Campagne', 'Des millionnaires qui demandent à être davantage taxés.', 'https://patrioticmillionaires.org'],
+    ['Tax Justice Network', 'Réseau', 'Réseau international de recherche et de plaidoyer contre les paradis fiscaux.', 'https://taxjustice.net']
+  ]},
+  { id: 'comprendre', title: 'Comprendre', intro: 'Les données et les analyses sur lesquelles repose ce site.', items: [
+    ['Observatoire international de la fiscalité', 'Recherche', "Le laboratoire dirigé par Gabriel Zucman, successeur de l'Observatoire européen de la fiscalité.", 'https://taxobservatory.world/fr/'],
+    ['World Inequality Database', 'Données', 'La base de données mondiale sur les inégalités de revenus et de patrimoine.', 'https://wid.world'],
+    ['Observatoire des inégalités', 'Données', 'Chiffres et analyses sur les inégalités en France, accessibles à tous.', 'https://www.inegalites.fr'],
+    ['Les Économistes atterrés', 'Association', "Association d'économistes qui défend d'autres politiques économiques.", 'https://www.atterres.org']
+  ]}
+];
+const nb = s => s.replace(/ ([%»:;?!€])/g, ' $1').replace(/« /g, '« ');
+const host = u => u.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+document.getElementById('list').innerHTML = SECTIONS.map(s => `
+  <section class="sec" id="${s.id}">
+    <h2>${nb(s.title)}</h2>
+    <p>${nb(s.intro)}</p>
+    <div class="grid">${s.items.map(([t, tag, d, u]) => `
+      <a class="item" href="${u}" target="_blank" rel="noopener">
+        <span class="tag">${tag}</span>
+        <span class="t">${nb(t)}</span>
+        <span class="d">${nb(d)}</span>
+        <span class="u">${host(u)}</span>
+      </a>`).join('')}
+    </div>
+  </section>`).join('');
+}
+</script>
+</body>
+</html>

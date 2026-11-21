@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le générateur d'excuses</title>
+<meta name="description" content="Le générateur d'excuses du milliardaire : une excuse au hasard, et la vraie réponse juste en dessous.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+.stage{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:stretch;margin-top:28px}
+.bubble{position:relative;background:#fff;color:#0b0d17;border-radius:22px;padding:clamp(22px,3vw,36px);min-height:240px;display:flex;flex-direction:column;justify-content:space-between}
+.bubble::after{content:"";position:absolute;left:44px;bottom:-22px;border-left:0 solid transparent;border-right:26px solid transparent;border-top:24px solid #fff}
+.bubble q{display:block;font-weight:800;font-stretch:80%;font-size:clamp(24px,3.2vw,36px);line-height:1.15;letter-spacing:-.01em;quotes:"«\00a0" "\00a0»"}
+.who{margin-top:18px;font-size:16px;color:#3b4056}
+.who b{color:#0b0d17}
+.fact{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);border-radius:22px;padding:clamp(20px,2.6vw,30px);display:flex;flex-direction:column;gap:12px}
+.fact .k{font-size:14px;font-weight:700;color:#ffd23f}
+.fact p{color:#fff;font-size:18px;line-height:1.45;margin:0}
+.fact a.more{color:#fff;font-weight:700}
+.ctrl{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
+.btn.big{min-height:56px;padding:0 26px;font-size:18px;background:#ffd23f;color:#0b0d17}
+.btn.light{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5)}
+.count{font-size:14px;color:#c9d0fb;align-self:center}
+.all{columns:2 22em;column-gap:28px;margin-top:8px;padding:0;list-style:none}
+.all li{break-inside:avoid;border-top:1px solid var(--line);padding:12px 0}
+.all q{font-weight:700;quotes:"«\00a0" "\00a0»"}
+.all a{font-size:14px;color:var(--blue)}
+@media(max-width:760px){.stage{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:no-preference){.bubble.pop{animation:pop .35s ease-out}@keyframes pop{from{transform:scale(.96);opacity:.4}to{transform:none;opacity:1}}}
+</style>
+</head>
+<body>
+
+<header class="hero band">
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="index.html">La Juste Part</a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="reponses.html">Réponses</a>
+        <a href="excuses.html" aria-current="page">Excuses</a>
+        <a href="cagnotte.html">Cagnotte</a>
+        <a href="quart-dheure.html">Quart d'heure</a>
+        <a href="solutions.html">Solutions</a>
+      </nav>
+    </div>
+    <h1>Le générateur d'excuses du milliardaire</h1>
+    <p class="lede">Pour les grandes fortunes à court d'arguments. Excuses garanties 100 % recyclées. La vraie réponse est fournie gratuitement à côté.</p>
+    <div class="stage">
+      <figure class="bubble" id="bubble" style="margin:0">
+        <q id="excuse"></q>
+        <figcaption class="who" id="who"></figcaption>
+      </figure>
+      <aside class="fact" aria-live="polite">
+        <div class="k">La vraie réponse</div>
+        <p id="fact"></p>
+        <a class="more" id="more" href="reponses.html">Lire la fiche complète et ses sources</a>
+      </aside>
+    </div>
+    <div class="ctrl">
+      <button class="btn big" id="next" type="button">Une autre excuse</button>
+      <button class="btn light" id="copy" type="button">Copier l'excuse et la réponse</button>
+      <span class="count" id="count"></span>
+    </div>
+  </div>
+</header>
+
+<main class="band">
+  <div class="wrap">
+    <h2>Toutes les excuses du catalogue</h2>
+    <p>Les personnages sont inventés. Les excuses, elles, ressemblent beaucoup à ce qu'on entend dans le débat. Chacune renvoie à une réponse sourcée.</p>
+    <ul class="all" id="all"></ul>
+  </div>
+</main>
+
+<footer class="band">
+  <div class="wrap">
+    <p><b>Satire.</b> Les personnages et leurs fortunes sont fictifs ; toute ressemblance avec des milliardaires existants serait une coïncidence fiscale. Les réponses s'appuient sur les sources citées dans la page <a href="reponses.html">Réponses</a>.</p>
+    <p>La Juste Part est un collectif citoyen indépendant, lié à aucun parti.</p>
+  </div>
+</footer>
+
+<script>
+{
+const WHO = [
+  ['Gonzague de la Holding', '412 M€'], ['Thibault d’Exil', '1,3 Md€'], ['Philippine Offshore', '860 M€'],
+  ['Charles-Henri Ruissel', '2,1 Md€'], ['Aymeric du Bouclier', '640 M€'], ['Bérengère de Monaco-sur-Mer', '3,4 Md€'],
+  ['Édouard Trust', '975 M€'], ['Ombeline Plafond', '1,8 Md€']
+];
+const FACT = {
+  'exil': "L'exil fiscal existe mais il est faible : chaque année, environ 0,2 % des 1 % les plus aisés quittent la France, selon le Conseil d'analyse économique.",
+  'deja-beaucoup': "Pour les 378 foyers les plus riches, l'impôt sur le revenu ne représente qu'environ 2 % de leur revenu économique (Institut des politiques publiques).",
+  'outil-de-travail': "La taxe ne vise que les patrimoines de plus de 100 millions d'euros, et en cas de vrai manque de liquidités, Gabriel Zucman propose de payer en actions.",
+  'rendement': "Les estimations vont de 5 à 20 milliards d'euros par an. Même l'hypothèse basse vaut à peu près le coût annuel de la suppression de l'ISF.",
+  'ruissellement': "Après la suppression de l'ISF, le comité d'évaluation de France Stratégie n'a identifié aucun effet sur l'investissement, mais une forte hausse des dividendes.",
+  'startups': "Les fondateurs riches sur le papier mais sans liquidités sont quelques dizaines, selon Zucman, et pourraient payer en actions.",
+  'mondial': "En 2024, le G20 s'est engagé à coopérer pour que les ultra-riches soient effectivement imposés. L'ONU négocie une convention fiscale jusqu'en 2027.",
+  'inconstitutionnel': "Sur la même base de calcul, les foyers milliardaires paient 26 % d'impôts, contre 46 % pour les 0,1 % les plus aisés juste en dessous (IPP).",
+  'jalousie': "86 % des Français soutiennent la taxe, dont 89 % des sympathisants LR et 92 % des sympathisants Renaissance (sondage Ifop, 2025)."
+};
+const EX = [
+  ['exil', "Si vous me taxez à 2 %, je pars en Belgique. Avec mes 3 000 emplois. Et mon labrador."],
+  ['exil', "La Suisse m'a déjà réservé une place de parking. Plein sud."],
+  ['deja-beaucoup', "Je paie énormément d'impôts. Enfin, ma holding. Enfin, un peu."],
+  ['deja-beaucoup', "Proportionnellement, je paie moins que mon chauffeur ? C'est qu'il gère mal ses finances."],
+  ['outil-de-travail', "Mon yacht est un outil de travail. J'y réfléchis énormément."],
+  ['outil-de-travail', "Je ne peux pas payer : tout mon argent est immobilisé. Dans trois châteaux."],
+  ['rendement', "Me taxer ne rapporterait rien. Croyez-moi, ne rien payer, c'est mon métier."],
+  ['ruissellement', "Laissez-moi tranquille, je ruisselle. Ça prend du temps, c'est tout."],
+  ['ruissellement', "Chaque euro que je ne paie pas finit par créer un emploi. Celui de mon fiscaliste."],
+  ['startups', "Pensez aux startups ! J'en ai racheté douze cette année."],
+  ['mondial', "Je suis pour, à condition que toute la planète l'adopte le même jour. À la même heure. Un 29 février."],
+  ['inconstitutionnel', "2 %, c'est confiscatoire. Il ne me resterait que 98 %."],
+  ['jalousie', "C'est de la jalousie. Les gens ne supportent pas la réussite des autres. Surtout la mienne."],
+  ['jalousie', "Taxer les milliardaires ? Et pourquoi pas taxer le soleil, pendant qu'on y est ?"]
+];
+const nb = s => s.replace(/ ([%»:;?!€])/g, ' $1');
+const $ = id => document.getElementById(id);
+let order = [], pos = -1, seen = 0;
+function shuffle(n){ const a = [...Array(n).keys()]; for (let i = n - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function show(){
+  if (pos < 0 || pos >= order.length){ order = shuffle(EX.length); pos = 0; }
+  const [id, text] = EX[order[pos]];
+  const [name, worth] = WHO[(order[pos] * 3 + seen) % WHO.length];
+  $('excuse').textContent = nb(text);
+  $('who').innerHTML = '— <b>' + name + '</b>, fortune estimée à ' + nb(worth) + ', personnage fictif';
+  $('fact').textContent = nb(FACT[id]);
+  $('more').href = 'reponses.html#' + id;
+  seen++;
+  $('count').textContent = seen + (seen > 1 ? ' excuses lues' : ' excuse lue') + ' sur ' + EX.length;
+  const b = $('bubble'); b.classList.remove('pop'); void b.offsetWidth; b.classList.add('pop');
+}
+$('next').addEventListener('click', () => { pos++; show(); });
+$('copy').addEventListener('click', e => {
+  const btn = e.currentTarget, label = 'Copier l’excuse et la réponse';
+  const url = location.href.split('#')[0].replace(/excuses\.html$/, '') + $('more').getAttribute('href');
+  const text = 'Excuse de milliardaire : « ' + $('excuse').textContent + ' »\nLa vraie réponse : ' + $('fact').textContent + '\n' + url;
+  const done = ok => { btn.textContent = ok ? 'Copié' : 'Sélectionnez et copiez'; setTimeout(() => { btn.textContent = label; }, 1800); };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(() => done(true)).catch(() => done(false)); else done(false);
+});
+$('all').innerHTML = EX.map(([id, t]) => '<li><q>' + nb(t) + '</q><br><a href="reponses.html#' + id + '">La vraie réponse</a></li>').join('');
+pos = 0; order = shuffle(EX.length); show();
+}
+</script>
+</body>
+</html>
