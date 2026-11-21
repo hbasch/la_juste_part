@@ -12,6 +12,7 @@ Des outils simples et sourcés pour que les plus grandes fortunes paient leur ju
 | `reponses.html` | **Ils disent… Vous répondez.** Neuf arguments contre la taxation des plus grandes fortunes, chacun avec une réponse courte à copier, le détail, ce qui est vrai dans l'argument et les sources. Chaque fiche a son lien direct (par exemple `reponses.html#exil`). |
 | `excuses.html` | **Le générateur d'excuses du milliardaire.** Une excuse satirique au hasard (personnages fictifs), avec la vraie réponse et le lien vers la fiche. |
 | `cagnotte.html` | **La cagnotte du troisième yacht.** Fausse cagnotte satirique pour un milliardaire fictif : aucun paiement, les boutons révèlent la chute et renvoient vers les solutions. |
+| `train-de-vie.html` | **Leur train de vie.** Simulateur : fortune, rendement, prix du yacht ; montre qu'après une taxe de 2 % la fortune grossit encore. Section sur les émissions des yachts et jets privés. |
 | `solutions.html` | **Des solutions.** Médias indépendants, coopératives, associations pour la justice fiscale, sources de données. |
 | `quart-dheure.html` | **Leur quart d'heure.** Le temps qu'il faut à un foyer milliardaire pour gagner votre revenu annuel, le mécanisme des holdings, une carte à partager et un message pour son député. |
 | `site.css` | Styles communs |
