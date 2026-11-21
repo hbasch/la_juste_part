@@ -56,7 +56,7 @@
       </nav>
     </div>
     <h1>Aidez Gonzague à s'offrir son troisième yacht</h1>
-    <p class="lede">Menacé par un impôt plancher de 2&nbsp;%, Gonzague de la Holding (412 millions d'euros, personnage fictif) risque de devoir garder ses deux yachts actuels une saison de plus. Chaque euro compte.</p>
+    <p class="lede">Menacé par un impôt plancher de 2&nbsp;%, Gonzague de la Holding (4,1 milliards d'euros, personnage fictif) risque de devoir garder ses deux yachts actuels une saison de plus. Chaque euro compte.</p>
 
     <div class="camp">
       <div class="pic" aria-label="Illustration&nbsp;: un grand yacht blanc numéro 3 sur la mer">
@@ -83,12 +83,12 @@
 
       <div class="box">
         <div class="raised" id="raised">3,40&nbsp;€</div>
-        <div class="goal">collectés sur un objectif de 180 000 000&nbsp;€</div>
+        <div class="goal">collectés sur un objectif de 1 milliard d'euros</div>
         <div class="bar"><i id="bar"></i></div>
-        <div class="meta"><span id="pct">0,000002&nbsp;% de l'objectif</span><span id="donors">2 donateurs</span></div>
+        <div class="meta"><span id="pct">0,00000034&nbsp;% de l'objectif</span><span id="donors">2 donateurs</span></div>
         <div class="gifts">
-          <button class="gift" type="button" data-v="1">Donner 1&nbsp;€</button>
           <button class="gift" type="button" data-v="10">Donner 10&nbsp;€</button>
+          <button class="gift" type="button" data-v="100000">Donner 100&nbsp;000&nbsp;€</button>
           <button class="gift" type="button" data-v="0" data-label="un week-end de RTT">Donner un week-end de RTT</button>
           <button class="gift" type="button" data-v="0" data-label="un rein">Donner un rein</button>
         </div>
@@ -137,7 +137,7 @@
 
 <script>
 {
-const GOAL = 180000000;
+const GOAL = 1000000000;
 let raised = 3.40, donors = 2;
 const $ = id => document.getElementById(id);
 const eur = n => new Intl.NumberFormat('fr-FR', {minimumFractionDigits: 2, maximumFractionDigits: 2}).format(n) + ' €';
@@ -160,7 +160,7 @@ document.querySelectorAll('.gift').forEach(b => b.addEventListener('click', () =
 }));
 $('share').addEventListener('click', e => {
   const btn = e.currentTarget, label = btn.textContent;
-  const text = "J'ai failli donner 1 € pour le troisième yacht d'un milliardaire. Puis j'ai appris que, pour les 378 foyers les plus riches, l'impôt sur le revenu ne pèse qu'environ 2 % de leur revenu économique (Institut des politiques publiques). " + location.href.split('#')[0];
+  const text = "J'ai failli donner 10 € pour le troisième yacht d'un milliardaire. Puis j'ai appris que, pour les 378 foyers les plus riches, l'impôt sur le revenu ne pèse qu'environ 2 % de leur revenu économique (Institut des politiques publiques). " + location.href.split('#')[0];
   const done = ok => { btn.textContent = ok ? 'Copié' : 'Sélectionnez et copiez'; setTimeout(() => { btn.textContent = label; }, 1800); };
   if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(() => done(true)).catch(() => done(false)); else done(false);
 });
